@@ -12,9 +12,15 @@ public class DashPluginSchemeLauncher extends AbstractLauncher {
 
     protected void openUri(final @Nonnull String uriStr) throws Exception
     {
-        Desktop desktop = Desktop.getDesktop();
-        URI uri = new URI(uriStr);
-        desktop.browse(uri);
+        // Desktop desktop = Desktop.getDesktop();
+        // URI uri = new URI(uriStr);
+        // desktop.browse(uri);
+        // fix for zeal on ubuntu for Android Studio
+		// TODO: detect linux and open accordingly
+        final GeneralCommandLine commandLine = new GeneralCommandLine("zeal");
+        commandLine.addParameter(uriStr);
+        commandLine.createProcess();
+
     }
 
 }
